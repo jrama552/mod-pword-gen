@@ -63,12 +63,14 @@ def filter_vault():
                 tags = []
                 tag_query = input(f'Search {field_filter[field]}(separate tags with a comma and space):\n')
                 for tag in tag_query.split(', '):
-                    tags.append(tag)
+                    print(f'you\'ve reached tag.split() of input; this is tag: {tag}')
+                    tags.append(tag.lower())
+                    print(f'Tags: {tags}')
                     field_flag = False
                 return tags, field.lower()
             else:
                 field_flag = False
-                return [input(f'Search {field_filter[field]}:\n')], field
+                return [input(f'Search {field_filter[field]}:\n').lower()], field
                 # query, field
         else:
             print(f'Please enter one of the options above.')
@@ -84,7 +86,6 @@ def get_tags():     # most likely a list of pre-existing tags
     tags = input('Account tags: \n').split(', ')
     print(tags)
     return tags
-
 
 
 

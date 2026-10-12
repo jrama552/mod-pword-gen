@@ -132,39 +132,41 @@ def filter_search(lst_tup, vault):
     query = lst_tup[0]
     field = lst_tup[-1]
     filtered = []
+    # sorts query into lists or single string
     if len(query) > 1:  #and query.lower() == 't':
         print(f'query type: {type(query)}, query length: {len(query)}, query: {query}')
         search_operator = input('Choose search operator \'AND\' or \'OR\'\n')
     else:
         query = query[0]
-        print(f'you\'ve only entered one query search item')
+        print(f'you\'ve only entered one query search item: {query}')
     # MAKE query a LIST of queries
     found = False
     for profile in vault:
         if field == 'a':
-            if query in profile.acc:
+            if query in profile.acc.lower():
                 filtered.append(profile)
                 found = True
         elif field == 'u':
-            if query in profile.user:
+            if query in profile.user.lower():
                 filtered.append(profile)
                 found = True
         elif field == 'p':
-            if query in profile.password:
+            if query in profile.password.lower():
                 filtered.append(profile)
                 found = True
         else:   # TAGS # iterates through both profiles, so it will flag one as not matching query duh
+            # if mutliple queries
             if len(query) > 1:
                 search_op = False
                 if not search_op:
                     if search_operator.lower() == 'and':
-                        if set(query) == set(profile.tags):
+                        if set(query) == set(profile.tags.lower()):
                             filtered.append(profile)
                             found = True
                             search_op = True
                     elif search_operator.lower() == 'or':
                         for item in query:
-                            if item in profile.tags:
+                            if item in profile.tags.lower():
                                 if profile not in filtered:
                                     filtered.append(profile)
                                 found = True
@@ -174,9 +176,9 @@ def filter_search(lst_tup, vault):
                         search_op = False
             else:
                 print(f'query: {query}')
-                for x in profile.tags:
+                for x in profile.tags.lower():
                     print(f'profile tags for {profile.acc}: {x}')
-                if query[0] in profile.tags:
+                if query[0] in profile.tags.lower():
                     filtered.append(profile)
                     found = True
     if not found:
