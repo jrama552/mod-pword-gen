@@ -24,7 +24,7 @@ end = time.perf_counter()
 print(f'\n{end - start:.5f} seconds')
 
 
-# -------------------------- current issue: search operator issue --------------------------------------------
+# -------------------------- current issue: class objects using dot functions (add class function?, next item: search operator issue --------------------------------------------
 # 3. other center (search, remove, assign passwords to 'account')
 # 4. save account/password pairs (password notepad) to file and retrieve
 # 5. ask user for input (what do you want to generate w/ (i.e. the
