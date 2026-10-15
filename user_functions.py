@@ -7,7 +7,7 @@ def generate_password(vault):
     while generate:
         word = gen_pword((order_el(source_files, char_list)))
         # reassign
-        if user_reassign():
+        if user_reassign(): # find existing profile
             # view all --> assigning new password
             if user_view():
                 generate = view_assign(vault, word, False)
@@ -20,10 +20,15 @@ def generate_password(vault):
             for x in vault:
                 x.printo()
         # creating new profile
-        else:
+        else: # create new profile
             generate = view_assign(profile_prompt(vault), word, True)   # use profile_prompt
 
         '''vault = save_word(save_prompt(word), word, vault)
         generate = gen_prompt()'''
+
+        '''def view_profile(vault):
+            # lwk just call view()
+            for x in vault:
+                print(f' this is yo vault: {x.printo()}')'''
 
 

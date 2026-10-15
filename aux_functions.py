@@ -85,13 +85,17 @@ def profile_prompt(vault):
     return vault
 
 
-def view(vault):
+def view(vault): # rename 'view_assign' on kirk
     # listing options
     # print(f'\x1B[3mFLAG:\x1B[0m you are viewing vault: {vault}')
     top_range = len(vault)
     for num, item in enumerate(vault, start=1):
         print(f'{num}.', end='')
         item.printo()
+    display_select(vault)
+
+
+def display_select(vault):
     # identifying profile
     answer = False
     while not answer:
@@ -113,10 +117,10 @@ def view(vault):
             print('Please select profile (using corresponding a number) within the range.')
             answer = False
 
-#                                   flag for new profile or not
+# assigning password to profiles                flag for new profile or not
 def view_assign(profile_lst, password, new): # take a look at this after finishing tags
     if profile_lst == 'None':
-        print(f'you reached view_assign() with no profiles found')
+        print('you reached view_assign() with no profiles found')
     else:
         if new:
             selected_profile = profile_lst[-1]

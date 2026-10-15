@@ -9,10 +9,10 @@ def user_reassign():
         # VIEW
         if field.lower() in exist_str:
             answer = True
-            return True
+            return True # check return flags
         elif field.lower() in new_str:
             answer = True
-            return True
+            return False
         else:
             print('Please choose one of the above options')
             answer = False
