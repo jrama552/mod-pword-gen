@@ -17,4 +17,16 @@ class Profile:
                 print(x, end='; ')
             print('\n')
 
+    def lowered(self, field):
+        lower_tags = []
+        for x in self.tags:
+            lower_tags.append(x.lower())
+        values = {
+            'a': self.acc.lower(),
+            'u': self.user.lower(),
+            'p': self.password.lower(),
+            't': lower_tags
+        }
+        return values[field]
+
 

@@ -141,17 +141,23 @@ def filter_search(lst_tup, vault):
         print(f'you\'ve only entered one query search item: {query}')
     # MAKE query a LIST of queries
     found = False
+    not_tags = ['a', 'u', 'p']
     for profile in vault:
-        if field == 'a':
-            if query in profile.acc.lower():
+        '''if field == 'a':
+            #if query in profile.acc.lower():
+            if query in profile.lowered(field): # ----------------------------------------------copy this
                 filtered.append(profile)
                 found = True
         elif field == 'u':
-            if query in profile.user.lower():
+            if query in profile.lowered(field):
                 filtered.append(profile)
                 found = True
         elif field == 'p':
             if query in profile.password.lower():
+                filtered.append(profile)
+                found = True'''
+        if field in not_tags:
+            if query in profile.lowered(field):
                 filtered.append(profile)
                 found = True
         else:   # TAGS # iterates through both profiles, so it will flag one as not matching query duh
@@ -160,13 +166,13 @@ def filter_search(lst_tup, vault):
                 search_op = False
                 if not search_op:
                     if search_operator.lower() == 'and':
-                        if set(query) == set(profile.tags.lower()):
+                        if set(query) == set(profile.lowered('t')): # -------------------------------------here--------------
                             filtered.append(profile)
                             found = True
                             search_op = True
                     elif search_operator.lower() == 'or':
                         for item in query:
-                            if item in profile.tags.lower():
+                            if item in profile.lowered('t'):
                                 if profile not in filtered:
                                     filtered.append(profile)
                                 found = True

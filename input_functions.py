@@ -3,14 +3,19 @@
 def user_reassign():
     exist_str = ['e', 'existing']
     new_str = ['n', 'new']
-    field = input('Do assign password to [e]xisting profile or [n]ew profile?\n')
-    # VIEW
-    if field.lower() in exist_str:
-        return True
-    elif field.lower() in new_str:
-        return False
-    else:
-        print('Please choose one of the above options')
+    answer = False
+    while not answer:
+        field = input('Do assign password to [e]xisting profile or [n]ew profile?\n')
+        # VIEW
+        if field.lower() in exist_str:
+            answer = True
+            return True
+        elif field.lower() in new_str:
+            answer = True
+            return True
+        else:
+            print('Please choose one of the above options')
+            answer = False
 
 
 def gen_prompt():
