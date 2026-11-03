@@ -2,6 +2,16 @@ from main_functions import *
 from preset_vault import preset_vault
 import time
 import os
+import traceback
+import sys
+
+def show_error_location(exc_type, exc_value, exc_tb):
+    sys.__excepthook__(exc_type, exc_value, exc_tb)   # prints the normal traceback first
+    summary = traceback.extract_tb(.__traceback__)
+    last = summary[-1]
+    print(f'File "{last.filename}", line {last.lineno}, in {last.name}', file=____)
+
+sys.excepthook = ____                                  # assign the function (no parentheses)
 
 start = time.perf_counter()
 
@@ -23,6 +33,9 @@ while run:
 end = time.perf_counter()
 print(f'\n{end - start:.5f} seconds')
 
+
+
+# right now: making a clickable traceback feature to take me back to the root place of the error
 # 3. need to fix profile.lowered() function, tags splitter, and
 # current: view ---> making 'view' function (in user functions vs in aux_functions)
 # 4. save account/password pairs (password notepad) to file and retrieve
