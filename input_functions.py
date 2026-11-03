@@ -89,6 +89,7 @@ def get_user():     # most likely a list of pre-existing users
 
 def get_tags():     # most likely a list of pre-existing tags
     tags = input('Account tags: \n').split(', ')
+    # need to adjust for input when tags only contains one query but has comma at the end ----------------------------------
     print(tags)
     return tags
 

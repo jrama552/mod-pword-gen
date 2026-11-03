@@ -26,9 +26,9 @@ def generate_password(vault):
         '''vault = save_word(save_prompt(word), word, vault)
         generate = gen_prompt()'''
 
-        '''def view_profile(vault):
+        '''def view_profile(vault, False):
             # lwk just call view()
-            for x in vault:
-                print(f' this is yo vault: {x.printo()}')'''
+            for item in vault:
+                print(f' this is yo vault: {item.printo()}')'''
 
 

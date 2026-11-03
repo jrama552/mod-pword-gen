@@ -23,7 +23,8 @@ while run:
 end = time.perf_counter()
 print(f'\n{end - start:.5f} seconds')
 
-# 3. current: view ---> making 'view' function (in user functions vs in aux_functions)
+# 3. need to fix profile.lowered() function, tags splitter, and
+# current: view ---> making 'view' function (in user functions vs in aux_functions)
 # 4. save account/password pairs (password notepad) to file and retrieve
 # 5. ask user for input (what do you want to generate w/ (i.e. the
 # actual customization and modular part of the pword generation --> pword resets)

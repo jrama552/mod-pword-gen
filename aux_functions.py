@@ -85,18 +85,20 @@ def profile_prompt(vault):
     return vault
 
 
-def view(vault): # rename 'view_assign' on kirk
+def view(vault, select): # rename 'view_assign' on kirk
     # listing options
     # print(f'\x1B[3mFLAG:\x1B[0m you are viewing vault: {vault}')
     top_range = len(vault)
     for num, item in enumerate(vault, start=1):
         print(f'{num}.', end='')
         item.printo()
-    display_select(vault)
+    if select:
+        display_select(vault) # below
 
 
 def display_select(vault):
     # identifying profile
+    top_range = len(vault)
     answer = False
     while not answer:
         #   profile_index = int(input('Select profile:\n')) - 1
@@ -125,7 +127,7 @@ def view_assign(profile_lst, password, new): # take a look at this after finishi
         if new:
             selected_profile = profile_lst[-1]
         else:
-            selected_profile = profile_lst[view(profile_lst)]
+            selected_profile = profile_lst[view(profile_lst, True)] # ---------------- issue with view() flag, 'select'-----------------
         selected_profile.password = password
         print('Password saved.')
         return False
@@ -141,8 +143,9 @@ def filter_search(lst_tup, vault):
         print(f'query type: {type(query)}, query length: {len(query)}, query: {query}')
         search_operator = input('Choose search operator \'AND\' or \'OR\'\n')
     else:
-        query = query[0]
+        query = query[0] # query is str
         print(f'you\'ve only entered one query search item: {query}')
+        print(f'query should be str: {type(query)}')
     # MAKE query a LIST of queries
     found = False
     not_tags = ['a', 'u', 'p']
@@ -166,11 +169,12 @@ def filter_search(lst_tup, vault):
                 found = True
         else:   # TAGS # iterates through both profiles, so it will flag one as not matching query duh
             # if mutliple queries
-            if len(query) > 1:
+            if type(query) == list:
+                print(f'length of q: {len(query)}')
                 search_op = False
                 if not search_op:
                     if search_operator.lower() == 'and':
-                        if set(query) == set(profile.lowered('t')): # -------------------------------------here--------------
+                        if set(query) == set(profile.lowered('t')): # --------------need to bug check here----------------------
                             filtered.append(profile)
                             found = True
                             search_op = True
@@ -184,7 +188,7 @@ def filter_search(lst_tup, vault):
                     else:
                         print('Respond with \'and\' or \'or\'.')
                         search_op = False
-            else:
+            else: # type(query) = str
                 print(f'query: {query}')
                 for x in profile.tags.lower():
                     print(f'profile tags for {profile.acc}: {x}')
