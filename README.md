@@ -1,12 +1,12 @@
 # mod-pword-gen
 
-A modular command-line password generator and profile vault, written in Python.
+A modular graphical interfaced password generator and profile vault written with Python.
 
-> **Status: work in progress.** Core generation works; viewing/editing the vault and saving to disk are still being built.
+> **status: work in progress.** Core generation/operations works; viewing/editing the vault and saving to disk are still being built.
 
 ## What it does
 
-Passwords are built from **blocks** that you can rearrange. Each block is either a few random characters or a word drawn from a word list. The current default order is:
+Passwords are built from **blocks** that you can rearrange. Each block is either a few random characters or a word drawn from a (custom) word list. An example order is:
 
 ```
 [2 hex chars] + [English word, 6–8 letters] + [2 digits] + [1 symbol]
@@ -81,9 +81,4 @@ Block order is set in `order_el()` in `aux_functions.py`. While `testing = True`
 | `logs.txt` / `code_log` | Development time log |
 
 ## Roadmap
-
-- [ ] Save and load the vault to/from a file
-- [ ] View and edit saved profiles from the menu
-- [ ] Interactive block customization and saved presets
-- [ ] Simple GUI that shows saved passwords
-- [ ] Re-enable the Japanese word list
+** to be updated **
