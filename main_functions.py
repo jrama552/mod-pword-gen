@@ -25,7 +25,7 @@ def direct_user(intent, vault):
         return True
     elif intent == 'v':
         print(f'\x1B[3mFLAG:\x1B[0m intent: {intent}')
-        view_profile(vault) # create func
+        view_vault(vault) # create func
         # function
         return True
     elif intent == 'e':

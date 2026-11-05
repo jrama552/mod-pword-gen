@@ -5,13 +5,13 @@ import os
 import traceback
 import sys
 
-def show_error_location(exc_type, exc_value, exc_tb):
+'''def show_error_location(exc_type, exc_value, exc_tb):
     sys.__excepthook__(exc_type, exc_value, exc_tb)   # prints the normal traceback first
-    summary = traceback.extract_tb(.__traceback__)
+    summary = traceback.extract_tb(exc_tb)
     last = summary[-1]
-    print(f'File "{last.filename}", line {last.lineno}, in {last.name}', file=____)
+    print(f'File "{last.filename}", line {last.lineno}, in {last.name}  2', file=sys.stderr) #last.name gives the module name
 
-sys.excepthook = ____                                  # assign the function (no parentheses)
+sys.excepthook = show_error_location'''                               # assign the function (no parentheses)
 
 start = time.perf_counter()
 
@@ -35,13 +35,10 @@ print(f'\n{end - start:.5f} seconds')
 
 
 
-# right now: making a clickable traceback feature to take me back to the root place of the error
-# 3. need to fix profile.lowered() function, tags splitter, and
 # current: view ---> making 'view' function (in user functions vs in aux_functions)
 # 4. save account/password pairs (password notepad) to file and retrieve
 # 5. ask user for input (what do you want to generate w/ (i.e. the
 # actual customization and modular part of the pword generation --> pword resets)
 # 6. similar idea, but presents of generation
 
-# main run config: if module, use 'main', not 'main.py' bc it looks for .py within main;
-# if script, use main.py
+# not sure if addressed: # 3. need to fix profile.lowered() function, tags splitter, and

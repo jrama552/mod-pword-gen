@@ -85,15 +85,15 @@ def profile_prompt(vault):
     return vault
 
 
-def view(vault, select): # rename 'view_assign' on kirk
+def view(vault, flag): #flag used for displaying selected list
     # listing options
     # print(f'\x1B[3mFLAG:\x1B[0m you are viewing vault: {vault}')
     top_range = len(vault)
     for num, item in enumerate(vault, start=1):
         print(f'{num}.', end='')
         item.printo()
-    if select:
-        display_select(vault) # below
+    if flag:
+        return display_select(vault) # below; returning number corresponding the assigned profile
 
 
 def display_select(vault):
@@ -127,7 +127,7 @@ def view_assign(profile_lst, password, new): # take a look at this after finishi
         if new:
             selected_profile = profile_lst[-1]
         else:
-            selected_profile = profile_lst[view(profile_lst, True)] # ---------------- issue with view() flag, 'select'-----------------
+            selected_profile = profile_lst[view(profile_lst, True)]
         selected_profile.password = password
         print('Password saved.')
         return False

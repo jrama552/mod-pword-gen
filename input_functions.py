@@ -35,7 +35,7 @@ def gen_prompt():
             flag = True
 
 
-def user_view():
+def user_view(): # functions returns true if user wants to view all; false if filter through
     view_str = ['v', 'view']
     filter_str = ['f', 'filter']
 
@@ -53,7 +53,7 @@ def user_view():
             print('Please choose one of the above options')
 
 
-def filter_vault():
+def filter_vault(): #
     field_filter = {
         'a': 'account',
         'u': 'user',

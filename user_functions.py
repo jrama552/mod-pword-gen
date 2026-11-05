@@ -31,4 +31,10 @@ def generate_password(vault):
             for item in vault:
                 print(f' this is yo vault: {item.printo()}')'''
 
-
+def view_vault(vault):
+    flag = True # flag for continued viewing of vault
+    if user_view(): # determines if user wants to view all or filter through
+        view(vault, False)
+        print('end reached')
+    else:
+        view_assign()
