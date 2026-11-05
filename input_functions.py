@@ -1,24 +1,17 @@
-
-
-def user_reassign():
+def ask_assign_to_existing():  # Asks existing vs. new profile; returns True (existing), False (new), or None on invalid input
     exist_str = ['e', 'existing']
     new_str = ['n', 'new']
-    answer = False
-    while not answer:
-        field = input('Do assign password to [e]xisting profile or [n]ew profile?\n')
-        # VIEW
-        if field.lower() in exist_str:
-            answer = True
-            return True # check return flags
-        elif field.lower() in new_str:
-            answer = True
-            return False
-        else:
-            print('Please choose one of the above options')
-            answer = False
+    field = input('Do assign password to [e]xisting profile or [n]ew profile?\n')
+    # VIEW
+    if field.lower() in exist_str:
+        return True
+    elif field.lower() in new_str:
+        return False
+    else:
+        print('Please choose one of the above options')
 
 
-def gen_prompt():
+def ask_regenerate():  # asks use vs. regenerate until valid; returns True to regenerate, False to use the password
     flag = True
     while flag:
         re = ['regenerate', 're']
@@ -31,17 +24,16 @@ def gen_prompt():
             flag = False
             return True
         else:
-            print('Answer with re/u')
+            print('Answer with y/n')
             flag = True
 
 
-def user_view(): # functions returns true if user wants to view all; false if filter through
+def ask_view_all():  # Asks view-all vs. filter; returns True for view all, False for filter
     view_str = ['v', 'view']
     filter_str = ['f', 'filter']
-
+    field = input('[v]iew all or [f]ilter profiles?\n')
     answer = False
     while not answer:
-        field = input('[v]iew all or [f]ilter profiles?\n')
         # VIEW
         if field.lower() in view_str:
             answer = True
@@ -53,7 +45,7 @@ def user_view(): # functions returns true if user wants to view all; false if fi
             print('Please choose one of the above options')
 
 
-def filter_vault(): #
+def prompt_search_criteria():  # Asks which field to search and the search text; returns a tuple (query, field_key), e.g. ('git', 'a')
     field_filter = {
         'a': 'account',
         'u': 'user',
@@ -64,37 +56,19 @@ def filter_vault(): #
     while field_flag:
         field = input('What field do you wish to filter through?\n[a]ccount, [u]sername, [p]assword, [t]ags\n')
         if field.lower() in field_filter.keys():
-            if field.lower() == 't':
-                tags = []
-                tag_query = input(f'Search {field_filter[field]}(separate tags with a comma and space):\n')
-                for tag in tag_query.split(', '):
-                    print(f'you\'ve reached tag.split() of input; this is tag: {tag}')
-                    tags.append(tag.lower())
-                    print(f'Tags: {tags}')
-                    field_flag = False
-                return tags, field.lower()
-            else:
-                field_flag = False
-                return [input(f'Search {field_filter[field]}:\n').lower()], field
-                # query, field
+            field_flag = False
         else:
             print(f'Please enter one of the options above.')
             field_flag = True
+    return input(f'Search {field_filter[field]}:\n'), field
 
 
-
-def get_user():     # most likely a list of pre-existing users
+# most likely a list of pre-existing users
+def prompt_username():  # Prompts for a username; returns the entered string
     return input('Username:\n')
 
 
-def get_tags():     # most likely a list of pre-existing tags
-    tags = input('Account tags: \n').split(', ')
-    # need to adjust for input when tags only contains one query but has comma at the end ----------------------------------
-    print(tags)
+# most likely a list of pre-existing tags
+def prompt_tags():  # Prompts for one tag; returns it inside a list
+    tags = [input('Account tags')]
     return tags
-
-
-
-
-
-
