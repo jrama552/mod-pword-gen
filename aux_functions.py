@@ -84,10 +84,11 @@ def profile_prompt(vault):
     vault.append(new_profile)
     return vault
 
-
+# currently displays profiles in vault, then returns a user-selected profile
 def view(vault, flag): #flag used for displaying selected list
     # listing options
     # print(f'\x1B[3mFLAG:\x1B[0m you are viewing vault: {vault}')
+    print("YOU USED ASSIGN U BITCH")
     top_range = len(vault)
     for num, item in enumerate(vault, start=1):
         print(f'{num}.', end='')
@@ -119,15 +120,15 @@ def display_select(vault):
             print('Please select profile (using corresponding a number) within the range.')
             answer = False
 
-# assigning password to profiles                flag for new profile or not
-def view_assign(profile_lst, password, new): # take a look at this after finishing tags
+# assigning password to profiles, returns False (ends the pword generation flag in user_functions)
+def view_assign(profile_lst, password, new):
     if profile_lst == 'None':
         print('you reached view_assign() with no profiles found')
     else:
         if new:
             selected_profile = profile_lst[-1]
         else:
-            selected_profile = profile_lst[view(profile_lst, True)]
+            selected_profile = profile_lst[view(profile_lst, True)] # view function used here ---------------------------
         selected_profile.password = password
         print('Password saved.')
         return False

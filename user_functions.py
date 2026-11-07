@@ -2,7 +2,7 @@ from pword_config import *
 
 
 # gen pword and assign to new profile
-def generate_password(vault):
+def gen_and_assign_pword(vault):
     generate = True
     while generate:
         word = gen_pword((order_el(source_files, char_list)))

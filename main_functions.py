@@ -21,7 +21,7 @@ def user_action():
 def direct_user(intent, vault):
     if intent == 'c':
         print(f'\x1B[3mFLAG:\x1B[0m intent: create profile/password')
-        generate_password(vault)
+        gen_and_assign_pword(vault)
         return True
     elif intent == 'v':
         print(f'\x1B[3mFLAG:\x1B[0m intent: {intent}')
