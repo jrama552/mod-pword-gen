@@ -3,8 +3,8 @@ from user_functions import *
 
 # ------------------------------------------action center-------------------------------------------------
 
-# returns the input string (not lowercased)
-def prompt_menu_choice():  # Asks what the user wants to do until the input is c/v/e/ex
+
+def user_action():
     flag = False
     while not flag:
         actions = ['c', 'v', 'e', 'ex']
@@ -17,14 +17,15 @@ def prompt_menu_choice():  # Asks what the user wants to do until the input is c
             flag = True
             return intent
 
-# returns True to keep the main loop going, False to exit
-def run_menu_action(intent, vault):  # runs the function matching the menu choice
+
+def direct_user(intent, vault):
     if intent == 'c':
         print(f'\x1B[3mFLAG:\x1B[0m intent: create profile/password')
-        generate_and_assign_password(vault)
+        generate_password(vault)
         return True
     elif intent == 'v':
         print(f'\x1B[3mFLAG:\x1B[0m intent: {intent}')
+        view_vault(vault) # create func
         # function
         return True
     elif intent == 'e':
@@ -33,3 +34,5 @@ def run_menu_action(intent, vault):  # runs the function matching the menu choic
         return True
     else:
         return False
+
+
