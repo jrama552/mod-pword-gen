@@ -37,4 +37,4 @@ def view_vault(vault):
         view(vault, False)
         print('end reached')
     else:
-        view_assign()
+        view_assign(filter_search(filter_vault(), vault), False, False)

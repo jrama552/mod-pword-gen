@@ -128,9 +128,13 @@ def view_assign(profile_lst, password, new):
         if new:
             selected_profile = profile_lst[-1]
         else:
-            selected_profile = profile_lst[view(profile_lst, True)] # view function used here ---------------------------
-        selected_profile.password = password
-        print('Password saved.')
+            if not password:
+                view(profile_lst, False)
+            else:
+                selected_profile = profile_lst[view(profile_lst, True)] # view function used here ---------------------------
+        if type(password) == str:
+            selected_profile.password = password
+            print('Password saved.')
         return False
 
 

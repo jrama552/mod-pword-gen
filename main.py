@@ -34,8 +34,7 @@ end = time.perf_counter()
 print(f'\n{end - start:.5f} seconds')
 
 
-# additional task: instead of automatically generating a password, ask the user whether they want to generate or input one
-# current: view ---> making 'view' function (in user functions vs in aux_functions)
+# view function finished (need to do more testing late though)
 # 4. save account/password pairs (password notepad) to file and retrieve
 # 5. ask user for input (what do you want to generate w/ (i.e. the
 # actual customization and modular part of the pword generation --> pword resets)
