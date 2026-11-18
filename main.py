@@ -2,16 +2,6 @@ from main_functions import *
 from preset_vault import preset_vault
 import time
 import os
-import traceback
-import sys
-
-'''def show_error_location(exc_type, exc_value, exc_tb):
-    sys.__excepthook__(exc_type, exc_value, exc_tb)   # prints the normal traceback first
-    summary = traceback.extract_tb(exc_tb)
-    last = summary[-1]
-    print(f'File "{last.filename}", line {last.lineno}, in {last.name}  2', file=sys.stderr) #last.name gives the module name
-
-sys.excepthook = show_error_location'''                               # assign the function (no parentheses)
 
 start = time.perf_counter()
 
@@ -35,7 +25,7 @@ print(f'\n{end - start:.5f} seconds')
 
 
 # view function finished (need to do more testing late though)
-# 4. save account/password pairs (password notepad) to file and retrieve
+# 4. save account/password pairs (password notepad) to file and retrieve (keep storage medium uniform (json/csv)
 # 5. ask user for input (what do you want to generate w/ (i.e. the
 # actual customization and modular part of the pword generation --> pword resets)
 # 6. similar idea, but presents of generation
